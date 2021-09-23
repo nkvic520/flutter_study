@@ -66,8 +66,7 @@ class _SunEarthMoonViewState extends State<SunEarthMoonView>
 
   void _updateLine() {
     // print("${ctrl.value * 2 * pi}");
-    line.rotate(ctrl.value * 2 * pi, ctrl.value * 32 * pi, ctrl.value * 2 * pi,
-        ctrl.value * 32 * pi);
+    line.rotate(ctrl.value * 2 * pi, ctrl.value * 32 * pi);
   }
 }
 
@@ -215,8 +214,8 @@ class Line extends ChangeNotifier {
         detaRotateFour,
         false,
         pointPaint..style = PaintingStyle.stroke);
-    // canvas.drawArc(Rect.fromCircle(center: end, radius: lengthTwo), 0.5,
-    //     detaRotateFour, false, pointPaint..style = PaintingStyle.stroke);
+    canvas.drawArc(Rect.fromCircle(center: end, radius: lengthTwo), 0, 2 * pi,
+        false, pointPaint..style = PaintingStyle.stroke);
   }
 
   void drawAnchor(Canvas canvas, Offset offset) {
@@ -242,8 +241,7 @@ class Line extends ChangeNotifier {
   double detaRotateThree = 0;
   double detaRotateFour = 0;
 
-  void rotate(
-      double rotate, double rotateTwo, double rotateThree, double rotateFour) {
+  void rotate(double rotate, double rotateTwo) {
     double _lengthTwo = lengthTwo;
 
     detaRotate = rotate - detaRotate;
